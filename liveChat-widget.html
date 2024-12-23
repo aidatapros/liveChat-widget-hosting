@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Live Chat Widget</title>
   <script type="text/javascript">
     window.__lc = window.__lc || {};
-    window.__lc.license = 9091395; // Replace with your actual license ID if different
+    window.__lc.license = 9091395; // Replace with your actual license ID
     ;(function (n, t, c) {
         function i(n) {
             return e._h ? e._h.apply(null, n) : e._q.push(n);
@@ -42,18 +42,18 @@
         !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e;
     })(window, document, [].slice);
 
-    // Wait for the widget to load and maximize it
+    // Open the chat widget automatically after it loads
     window.__lc.asyncInit = function() {
       window.LiveChatWidget.on('ready', function() {
+        // Ensure the chat widget is visible and maximized
         window.LiveChatWidget.call('maximize');
       });
     };
   </script>
 </head>
-<body>
-  <!-- Container for the chat widget -->
-  <div id="chat-widget-container" style="position: fixed; bottom: 0; right: 0; width: 300px; height: 400px; z-index: 1000;">
-    <!-- The iframe will load dynamically via the LiveChat script -->
+<body style="margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden;">
+  <div id="chat-widget-container" style="position: fixed; inset: 0; width: 100%; height: 100%; z-index: 2147483639; background-color: transparent; overflow: hidden;">
+    <!-- The LiveChat widget iframe will load dynamically -->
   </div>
 </body>
 </html>
