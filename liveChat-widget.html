@@ -41,6 +41,13 @@
         };
         !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e;
     })(window, document, [].slice);
+
+    // Wait for the widget to load and maximize it
+    window.__lc.asyncInit = function() {
+      window.LiveChatWidget.on('ready', function() {
+        window.LiveChatWidget.call('maximize');
+      });
+    };
   </script>
 </head>
 <body>
