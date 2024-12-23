@@ -42,12 +42,18 @@
         !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e;
     })(window, document, [].slice);
 
-    // Open the chat widget automatically after it loads
-    window.__lc.asyncInit = function() {
-      window.LiveChatWidget.on('ready', function() {
-        // Ensure the chat widget is visible and maximized
-        window.LiveChatWidget.call('maximize');
-      });
+    // Inject JavaScript to maximize the chat widget
+    window.onload = function() {
+      // Ensure the widget is loaded and maximized
+      const maximizeChat = () => {
+        if (window.LiveChatWidget && window.LiveChatWidget.call) {
+          window.LiveChatWidget.call('maximize');
+        } else {
+          // Retry until the widget is available
+          setTimeout(maximizeChat, 100);
+        }
+      };
+      maximizeChat();
     };
   </script>
 </head>
